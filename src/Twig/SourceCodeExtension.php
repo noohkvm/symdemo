@@ -46,9 +46,6 @@ class SourceCodeExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * @param string|TemplateWrapper|array $template
-     */
     public function showSourceCode(Environment $twig, $template): string
     {
         return $twig->render('debug/source_code.html.twig', [
@@ -97,7 +94,10 @@ class SourceCodeExtension extends AbstractExtension
         return new \ReflectionFunction($callable);
     }
 
-    private function getTemplateSource(TemplateWrapper $template): array
+    /**
+     * @param TemplateWrapper|Template $template
+     */
+    private function getTemplateSource($template): array
     {
         $templateSource = $template->getSourceContext();
 
